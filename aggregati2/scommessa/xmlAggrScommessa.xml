@@ -1,0 +1,208 @@
+<Schema name="DW_bet2020_v22">
+	<Dimension type="StandardDimension" visible="true" highCardinality="false" name="Cliente">
+		<Hierarchy name="fasciaEta" visible="true" hasAll="true" primaryKey="idcliente">
+			<Table name="dt_cliente">
+			</Table>
+			<Level name="fasciaEta" visible="true" table="dt_cliente" column="fasciaEta" nameColumn="fasciaEta" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+			</Level>
+		</Hierarchy>
+		<Hierarchy name="citta" visible="true" hasAll="true" primaryKey="idcliente" primaryKeyTable="dt_cliente">
+			<Join leftKey="idcliente" rightKey="idcitta">
+				<Table name="dt_cliente">
+				</Table>
+				<Table name="dt_citta">
+				</Table>
+			</Join>
+			<Level name="citta" visible="true" table="dt_citta" column="citta" nameColumn="citta" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+			</Level>
+		</Hierarchy>
+		<Hierarchy name="idcliente" visible="true" hasAll="true">
+			<Table name="dt_cliente">
+			</Table>
+			<Level name="idcliente" visible="true" table="dt_cliente" column="idcliente" nameColumn="idcliente" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+			</Level>
+		</Hierarchy>
+		<Hierarchy name="nazione" visible="true" hasAll="true" primaryKey="idcliente" primaryKeyTable="dt_cliente">
+			<Join leftKey="idcliente" rightKey="idcitta">
+				<Table name="dt_cliente">
+				</Table>
+				<Table name="dt_citta">
+				</Table>
+			</Join>
+			<Level name="nazione" visible="true" table="dt_citta" column="nazione" nameColumn="nazione" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+			</Level>
+		</Hierarchy>
+	</Dimension>
+	<Dimension type="StandardDimension" visible="true" highCardinality="false" name="Esito">
+		<Hierarchy name="esito" visible="true" hasAll="true">
+			<Table name="ft_schedina">
+			</Table>
+			<Level name="esito" visible="true" table="ft_schedina" column="esito" nameColumn="esito" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+			</Level>
+		</Hierarchy>
+	</Dimension>
+	<Dimension type="StandardDimension" visible="true" highCardinality="false" name="Data">
+		<Hierarchy name="data" visible="true" hasAll="true" primaryKey="iddata">
+			<Table name="dt_data">
+			</Table>
+			<Level name="data" visible="true" table="dt_data" column="data" nameColumn="data" type="Date" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+			</Level>
+		</Hierarchy>
+		<Hierarchy name="iddata" visible="true" hasAll="true">
+			<Table name="dt_data">
+			</Table>
+			<Level name="iddata" visible="true" table="dt_data" column="iddata" nameColumn="iddata" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+			</Level>
+		</Hierarchy>
+		<Hierarchy name="mese" visible="true" hasAll="true" primaryKey="iddata">
+			<Table name="dt_data">
+			</Table>
+			<Level name="mese" visible="true" table="dt_data" column="mese" nameColumn="mese" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+			</Level>
+		</Hierarchy>
+		<Hierarchy name="anno" visible="true" hasAll="true">
+			<Table name="dt_data">
+			</Table>
+			<Level name="anno" visible="true" table="dt_data" column="anno" nameColumn="anno" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+			</Level>
+		</Hierarchy>
+	</Dimension>
+	<Dimension type="StandardDimension" visible="true" highCardinality="false" name="Orario">
+		<Hierarchy name="orario" visible="true" hasAll="true">
+			<Table name="ft_schedina">
+			</Table>
+			<Level name="orario" visible="true" table="ft_schedina" column="orario" nameColumn="orario" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+			</Level>
+		</Hierarchy>
+	</Dimension>
+	<Dimension type="StandardDimension" visible="true" highCardinality="false" name="Stagione">
+		<Hierarchy name="stagione" visible="true" hasAll="true">
+			<Table name="ft_scommessa">
+			</Table>
+			<Level name="stagione" visible="true" table="ft_scommessa" column="stagione" nameColumn="stagione" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+			</Level>
+		</Hierarchy>
+	</Dimension>
+	<Dimension type="StandardDimension" visible="true" highCardinality="false" name="Pronostico Singolo">
+		<Hierarchy name="pronostico singolo" visible="true" hasAll="true">
+			<Table name="ft_scommessa">
+			</Table>
+			<Level name="pronostico singolo" visible="true" table="ft_scommessa" column="pronosticoSingolo" nameColumn="pronosticoSingolo" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+			</Level>
+		</Hierarchy>
+	</Dimension>
+	<Dimension type="StandardDimension" visible="true" highCardinality="false" name="Pronostico Partita">
+		<Hierarchy name="pronostico partita" visible="true" hasAll="true">
+			<Table name="ft_scommessa">
+			</Table>
+			<Level name="pronostico partita" visible="true" table="ft_scommessa" column="pronosticoPartita" nameColumn="pronosticoPartita" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+			</Level>
+		</Hierarchy>
+	</Dimension>
+	<Dimension type="StandardDimension" visible="true" highCardinality="false" name="Competizione">
+		<Hierarchy name="competizione" visible="true" hasAll="true" primaryKey="idcompetizione">
+			<Table name="dt_competizione">
+			</Table>
+			<Level name="competizione" visible="true" table="dt_competizione" column="idcompetizione" nameColumn="idcompetizione" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+			</Level>
+			<Level name="nazione" visible="true" table="dt_competizione" column="nazione" nameColumn="nazione" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+			</Level>
+			<Level name="sport" visible="true" table="dt_competizione" column="sport" nameColumn="sport" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+			</Level>
+		</Hierarchy>
+	</Dimension>
+	<Dimension type="StandardDimension" visible="true" highCardinality="false" name="Atleta">
+		<Hierarchy name="atleta" visible="true" hasAll="true">
+			<Table name="dt_atleta">
+			</Table>
+			<Level name="atleta" visible="true" table="dt_atleta" column="idatleta" nameColumn="idatleta" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+				<Property name="nome" column="nome" type="String">
+				</Property>
+			</Level>
+		</Hierarchy>
+	</Dimension>
+	<Dimension type="StandardDimension" visible="true" highCardinality="false" name="Team">
+		<Hierarchy name="team" visible="true" hasAll="true">
+			<Table name="dt_team">
+			</Table>
+			<Level name="team" visible="true" table="dt_team" column="idteam" nameColumn="idteam" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+			</Level>
+		</Hierarchy>
+	</Dimension>
+	<Cube name="Cubo_schedina_v22" visible="true" cache="true" enabled="true">
+		<Table name="ft_schedina">
+		</Table>
+		<DimensionUsage source="Cliente" name="cliente" visible="true" foreignKey="idcliente" highCardinality="false">
+		</DimensionUsage>
+		<DimensionUsage source="Esito" name="esito" visible="true" foreignKey="esito" highCardinality="false">
+		</DimensionUsage>
+		<DimensionUsage source="Data" name="data" visible="true" foreignKey="iddata" highCardinality="false">
+		</DimensionUsage>
+		<DimensionUsage source="Orario" name="ora" visible="true" foreignKey="orario" highCardinality="false">
+		</DimensionUsage>
+		<Measure name="numero_schedine" column="numero_schedine" aggregator="sum" visible="true">
+		</Measure>
+		<Measure name="bilancio" column="bilancio" aggregator="sum" visible="true">
+		</Measure>
+		<Measure name="vincita_totale" column="vincita_totale" aggregator="sum" visible="true">
+		</Measure>
+		<Measure name="importo_giocato_totale" column="importo_giocato_totale" aggregator="sum" visible="true">
+		</Measure>
+		<CalculatedMember name="importo_giocato_medio" formula="[Measures].[importo_giocato_totale]/[Measures].[numero_schedine]" dimension="Measures" visible="true">
+		</CalculatedMember>
+		<CalculatedMember name="vincita_media" formula="[Measures].[vincita_totale]/[Measures].[numero_schedine]" dimension="Measures" visible="true">
+		</CalculatedMember>
+	</Cube>
+	<Cube name="Cubo_scommessa_v13" visible="true" cache="true" enabled="true">
+		<Table name="ft_scommessa">
+			<AggName name="AggrTeam">
+				<AggFactCount column="ft_scommessa_fact_count">
+				</AggFactCount>
+				<AggMeasure column="ft_scommessa_occorrenze" name="[Measures].[occorrenze]">
+				</AggMeasure>
+				<AggLevel column="dt_team_team" name="[teamCasa.team].[team]">
+				</AggLevel>
+			</AggName>
+			<AggName name="AggrPronPartita">
+				<AggFactCount column="ft_scommessa_fact_count">
+				</AggFactCount>
+				<AggMeasure column="ft_scommessa_occorrenze" name="[Measures].[occorrenze]">
+				</AggMeasure>
+				<AggLevel column="ft_scommessa_pronostico_partit" name="[pronostico_partita.pronostico partita].[pronostico partita]">
+				</AggLevel>
+			</AggName>
+			<AggName name="AggrPronSingolo">
+				<AggFactCount column="ft_scommessa_fact_count">
+				</AggFactCount>
+				<AggMeasure column="ft_scommessa_occorrenze" name="[Measures].[occorrenze]">
+				</AggMeasure>
+				<AggLevel column="ft_scommessa_pronostico_singol" name="[pronostico_singolo.pronostico singolo].[pronostico singolo]">
+				</AggLevel>
+			</AggName>
+			<AggName name="AggrCompetizione">
+				<AggFactCount column="ft_scommessa_fact_count">
+				</AggFactCount>
+				<AggMeasure column="ft_scommessa_occorrenze" name="[Measures].[occorrenze]">
+				</AggMeasure>
+				<AggLevel column="dt_competizione_competizione" name="[competizione].[competizione]">
+				</AggLevel>
+			</AggName>
+		</Table>
+		<DimensionUsage source="Competizione" name="competizione" visible="true" foreignKey="idcompetizione" highCardinality="false">
+		</DimensionUsage>
+		<DimensionUsage source="Pronostico Singolo" name="pronostico_singolo" visible="true" foreignKey="pronosticoSingolo" highCardinality="false">
+		</DimensionUsage>
+		<DimensionUsage source="Pronostico Partita" name="pronostico_partita" visible="true" foreignKey="pronosticoPartita" highCardinality="false">
+		</DimensionUsage>
+		<DimensionUsage source="Atleta" name="atleta" visible="true" foreignKey="idatleta" highCardinality="false">
+		</DimensionUsage>
+		<DimensionUsage source="Team" name="teamCasa" visible="true" foreignKey="idteamCasa" highCardinality="false">
+		</DimensionUsage>
+		<DimensionUsage source="Team" name="teamOspite" visible="true" foreignKey="idteamOspite" highCardinality="false">
+		</DimensionUsage>
+		<DimensionUsage source="Stagione" name="stagione" visible="true" foreignKey="stagione" highCardinality="false">
+		</DimensionUsage>
+		<Measure name="occorrenze" column="numero schedine" aggregator="sum" visible="true">
+		</Measure>
+	</Cube>
+</Schema>

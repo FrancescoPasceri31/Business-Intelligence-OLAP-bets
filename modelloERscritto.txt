@@ -1,0 +1,22 @@
+DATABASE_SS
+
+Atleta(codAtl,nome_completo)
+Match(codMatch, partecipA, partecipB)
+Evento_Atleta(ATLETA, PRONOSTICO_SINGOLO, MATCH)
+Evento_Match(MATCH, PRONOSTICO)
+Pronostico_Singolo(segno)
+Pronostico(segno)
+Scommessa(codScommessa, quota, EVENTO_MATCH / EVENTO_ATLETA)
+Schedina(codSchedina, data, cod_cliente, importo, quotaTot, vincita, esito)
+R_Schedina_Scommessa(codSchedina, codScommessa)
+----------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
+DATABASE_ES
+
+Sport(codSport, nomeSport)
+Competizione(codCompetizione, SPORT, nome_competizione, nazione)
+Match(codMatch, COMPETIZIONE[codcomp, sport], esito_match, risultato, anno_stagione, nazione)
+Atleta_Partecipante(codPartecipante, nome, data_nascita, stipendio, TEAM_APPARTENENZA)
+Team_Partecipante(codPartecipante, nome, nazione, sigla, fatturato)
+R_Match_Partecipanti(MATCH, PARTECIPANTE)
+ 
