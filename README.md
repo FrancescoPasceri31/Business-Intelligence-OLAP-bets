@@ -1,4 +1,4 @@
-# BusinessIntelligence
+# BusinessIntelligence, autori: Francesco Pasceri e Simone Giorgio
 Data warehouse per gestione di scommesse:
 
 1) Generazione di dati sintetici di scommesse sportive.
